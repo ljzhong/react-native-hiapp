@@ -3,11 +3,6 @@ import React, {
 } from 'react'
 
 import {
-    Text,
-    View
-} from 'react-native'
-
-import {
     Scene,
     Router,
     Modal, 
@@ -28,30 +23,7 @@ import TweetDetailsView from '../../Views/TweetDetails'
 import CommentView from '../../Views/Comment'
 
 import styleUtils from '../../Styles'
-import IconfontConf from '../../Utils/iconfontConf'
-
-const tabIconfont = {
-    Home: 'E613',
-    Contacts: 'E60D',
-    Settings: 'E610',
-    HomeSelected: 'E602',
-    ContactsSelected: 'E614',
-    SettingsSelected: 'E60F'
-}
-
-class TabIcon extends Component {
-    render(){
-        let textStyle = this.props.selected ? styles.selectedTabText : styles.tabText
-        let iconStyle = this.props.selected ? styles.selectedTabIcon : {} 
-        let iconFont = this.props.selected ? tabIconfont[this.props.iconText + 'Selected'] : tabIconfont[this.props.iconText] 
-        return (
-            <View style={styles.tab}>
-                <Text style={[styles.tabIcon, iconStyle]}>{IconfontConf('uni' + iconFont)}</Text>
-                <Text style={textStyle}>{this.props.iconText}</Text>        
-            </View>
-        )
-    }
-}
+import TabIcon from '../TabIcon'
 
 export default class NavigatorComp extends Component {
     render() {
@@ -75,9 +47,6 @@ const styles = {
     navBarStyle: {
         backgroundColor: '#f7f7f8'
     },
-    tab: {
-        alignItems: 'center'
-    },
     tabBarStyle: {
         borderTopWidth: 0.5,
         borderColor: '#c4c4c4',
@@ -85,21 +54,5 @@ const styles = {
     },
     tabBarSelectedStyle: {
         backgroundColor: '#f7f7f8'
-    },
-    tabText: {
-        color: '#929292',
-        fontSize: 13
-    },
-    selectedTabText: {
-        color: '#ff9630',
-        fontSize: 13        
-    },
-    tabIcon: {  
-        fontSize: 28,
-        color: '#929292',
-        fontFamily: 'iconfont'     
-    },
-    selectedTabIcon: {
-        color: '#ff9630'        
     }
 }
