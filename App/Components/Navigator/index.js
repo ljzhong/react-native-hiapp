@@ -2,6 +2,8 @@ import React, {
     Component    
 } from 'react'
 
+import { Platform } from 'react-native'
+
 import {
     Scene,
     Router,
@@ -10,32 +12,34 @@ import {
     Actions
 } from 'react-native-router-flux'
 
-import HomeView from '../../Views/Home' 
-import SettingsView from '../../Views/Settings' 
-import ContactsView from '../../Views/Contacts' 
-
-import AboutView from '../../Views/About'
-import MessageView from '../../Views/Message'
-import TweetView from '../../Views/Tweet'
-import FeedbackView from '../../Views/Feedback'
-import WebViewView from '../../Views/WebView'
-import TweetDetailsView from '../../Views/TweetDetails'
-import CommentView from '../../Views/Comment'
-
-import styleUtils from '../../Styles'
-import TabIcon from '../TabIcon'
+const getSceneStyle = function (props, computedProps) {
+    const style = {
+        flex: 1,
+        backgroundColor: '#efeff4',
+        shadowColor: null,
+        shadowOffset: null,
+        shadowOpacity: null,
+        shadowRadius: null,
+    }
+    if (computedProps.isActive) {
+        style.paddingTop = computedProps.hideNavBar ? 0 : Platform.OS === 'android' ? 56 : 64
+        style.paddingBottom = computedProps.hideTabBar ? 0 : 50
+    }
+    return style
+}
 
 export default class NavigatorComp extends Component {
     render() {
         return (
-            <Router>
-                <Scene key='modal' component={Modal}>
+            <Router getSceneStyle={getSceneStyle}>
+                <Scene key='modal' component={Modal} >
                     <Scene key='root'>
                         <Scene key='tabbar' tabs={true} tabBarStyle={styles.tabBarStyle} tabBarSelectedItemStyle={styles.tabBarSelectedStyle}>
-                            <Scene key='home_tab' component={HomeView} navigationBarStyle={styles.navBarStyle} title='HiApp' iconText={'Home'} icon={TabIcon} sceneStyle={[styleUtils.commonScene]}/>
-                            <Scene key='contacts_tab' component={ContactsView} navigationBarStyle={styles.navBarStyle} title='HiApp' iconText={'Contacts'} icon={TabIcon} sceneStyle={[styleUtils.commonScene]}/>
-                            <Scene key='setting_tab' component={SettingsView} navigationBarStyle={styles.navBarStyle} title='HiApp' iconText={'Settings'} icon={TabIcon} sceneStyle={[styleUtils.commonScene]}/>
+                            {require('../../Views/Home')}
+                            {require('../../Views/Contacts')}
+                            {require('../../Views/Settings')}
                         </Scene>
+                        {require('../../Views/Tweet')}
                     </Scene>
                 </Scene>
             </Router>
@@ -44,9 +48,6 @@ export default class NavigatorComp extends Component {
 } 
 
 const styles = {
-    navBarStyle: {
-        backgroundColor: '#f7f7f8'
-    },
     tabBarStyle: {
         borderTopWidth: 0.5,
         borderColor: '#c4c4c4',

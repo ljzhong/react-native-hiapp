@@ -8,14 +8,20 @@ import {
     Text
 } from 'react-native'
 
+import { 
+    Scene,
+    Actions
+ } from 'react-native-router-flux'
+
 import GiftedListView from 'react-native-gifted-listview'
 import ItemCell from '../../Components/ItemCell'
 import styleUtils from '../../Styles'
 import {ajax} from '../../Network'
 import {getAvatarUrl} from '../../Utils'
 import groupBy from 'lodash/groupBy'
+import TabIcon from '../../Components/TabIcon'
 
-export default class ContactsView extends Component {
+class ContactsView extends Component {
     constructor(props) {
         super(props)
         this.state = {}
@@ -91,6 +97,14 @@ export default class ContactsView extends Component {
         })    
     }
 }
+
+module.exports = <Scene key='contacts_tab' 
+    component={ContactsView} 
+    navigationBarStyle={styleUtils.navBarStyle} 
+    title='HiApp' 
+    iconText='Contacts' 
+    icon={TabIcon} 
+/>
 
 const customStyles = {
     paginationView: {

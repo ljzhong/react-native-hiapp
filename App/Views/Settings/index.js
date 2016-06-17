@@ -10,13 +10,19 @@ import {
     TouchableHighlight
 } from 'react-native'
 
+import { 
+    Scene,
+    Actions
+ } from 'react-native-router-flux'
+
 import capitalize from 'lodash/capitalize'
 
 import ItemCell from '../../Components/ItemCell'
 import Button from 'apsl-react-native-button'
 import styleUtils from '../../Styles'
+import TabIcon from '../../Components/TabIcon'
 
-export default class SettingsView extends Component {
+class SettingsView extends Component {
     constructor(props) {
         super(props)
         this.state = {}
@@ -76,6 +82,14 @@ export default class SettingsView extends Component {
         })    
     }
 } 
+
+module.exports = <Scene key='settings_tab' 
+    component={SettingsView} 
+    navigationBarStyle={styleUtils.navBarStyle} 
+    title='HiApp' 
+    iconText='Settings' 
+    icon={TabIcon} 
+/>
 
 const itemCellColor = {
     container: styleUtils.itemCell,

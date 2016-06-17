@@ -10,14 +10,21 @@ import {
     Text
 } from 'react-native'
 
+import { 
+    Scene,
+    Actions
+ } from 'react-native-router-flux'
+
 import moment from 'moment'
 import GiftedListView from 'react-native-gifted-listview'
 import ParsedText from 'react-native-parsed-text'
 import {ajax} from '../../Network'
+import iconfontConf from '../../Utils/iconfontConf'
 import styleUtils from '../../Styles'
+import TabIcon from '../../Components/TabIcon'
 import {getAvatarUrl} from '../../Utils'
 
-export default class HomeView extends Component {
+class HomeView extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -141,6 +148,17 @@ export default class HomeView extends Component {
         })
     }
 }
+
+module.exports = <Scene key='home_tab' 
+    component={HomeView} 
+    navigationBarStyle={styleUtils.navBarStyle} 
+    title='HiApp' 
+    iconText='Home' 
+    icon={TabIcon} 
+    rightTitle={iconfontConf('uniE601')}
+    rightButtonTextStyle={[styleUtils.buttonText, styleUtils.buttonIconFontText]}
+    onRight={() => Actions.tweet()}
+/>
 
 const customStyles = {
     paginationView: {

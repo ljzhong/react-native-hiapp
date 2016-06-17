@@ -8,10 +8,15 @@ import {
     Alert
 } from 'react-native'
 
+import { 
+    Scene,
+    Actions
+ } from 'react-native-router-flux'
+
 import styleUtils from '../../Styles'
 import Editor from '../../Components/Editor'
 
-export default class TweetView extends Component{
+class TweetView extends Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -20,7 +25,7 @@ export default class TweetView extends Component{
     }
     
     componentWillMount() {
-        this.props.route.sendTweet = this.sendTweet.bind(this)
+        //this.props.route.sendTweet = this.sendTweet.bind(this)
     }
 
     render() {
@@ -39,7 +44,7 @@ export default class TweetView extends Component{
             'Sent successfully',
             this.state.text,
             [
-                {text: 'OK', onPress: () => this.props.navigator.pop()}
+                {text: 'OK', onPress: () => Actions.pop()}
             ]
         )
     }
@@ -50,6 +55,22 @@ export default class TweetView extends Component{
         })
     }
 }
+
+module.exports = <Scene key='tweet' 
+    component={TweetView} 
+    title='Tweet'
+    hideTabBar={true}
+    navigationBarStyle={styleUtils.navBarStyle} 
+    direction={'vertical'}
+    backTitle={'Cancel'}
+    hideBackImage={true}
+    backButtonTextStyle={styleUtils.buttonText}
+    rightTitle={'Send'}
+    rightButtonTextStyle={styleUtils.buttonText}
+    onRight={() => {
+        
+    }}
+/>
 
 const styles = StyleSheet.create({
     container: {

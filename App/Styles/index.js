@@ -1,5 +1,3 @@
-import { Platform } from 'react-native'
-
 let itemCell = {
     backgroundColor: 'white',
     margin: 10,
@@ -75,9 +73,15 @@ export default {
             alignItems: 'center'
         }
     },
-    commonScene: {
-        backgroundColor: '#efeff4',
-        paddingTop: Platform.OS === 'android' ? 56 : 64,
-        paddingBottom: 50
+    navBarStyle: {
+        backgroundColor: '#f7f7f8'
+    },
+    buttonText: {
+        fontSize: 16, 
+        color: '#333'
+    },
+    buttonIconFontText: {
+        fontSize: 26, 
+        fontFamily: 'iconfont'
     }
 }
