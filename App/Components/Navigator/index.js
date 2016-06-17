@@ -19,7 +19,6 @@ import HomeView from '../../Views/Home'
 import SettingsView from '../../Views/Settings' 
 import ContactsView from '../../Views/Contacts' 
 
-import IndexView from '../../Views/Index'
 import AboutView from '../../Views/About'
 import MessageView from '../../Views/Message'
 import TweetView from '../../Views/Tweet'
