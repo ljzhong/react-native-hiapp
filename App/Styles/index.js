@@ -1,3 +1,5 @@
+import { Platform } from 'react-native'
+
 let itemCell = {
     backgroundColor: 'white',
     margin: 10,
@@ -72,5 +74,10 @@ export default {
             fontWeight: '500',
             alignItems: 'center'
         }
+    },
+    commonScene: {
+        backgroundColor: '#efeff4',
+        paddingTop: Platform.OS === 'android' ? 56 : 64,
+        paddingBottom: 50
     }
 }

@@ -23,7 +23,7 @@
     "react-native-gifted-messenger": "^0.1.4",
     "react-native-gifted-spinner": "0.0.4",
     "react-native-parsed-text": "0.0.12",
-    "react-native-tab-navigator": "^0.3.2"
+    "react-native-router-flux": "^3.30.0"
   },
   "devDependencies": {
     "eslint": "^2.4.0",
